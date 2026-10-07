@@ -1,0 +1,17 @@
+{
+  "id": "./coin-keeper.html",
+  "name": "Coin Keeper",
+  "short_name": "Coin Keeper",
+  "description": "A private shortcut list for your sweepstakes sites.",
+  "start_url": "./coin-keeper.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#111713",
+  "theme_color": "#111713",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "./coin-keeper-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
+
+
