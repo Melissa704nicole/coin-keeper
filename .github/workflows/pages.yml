@@ -9,6 +9,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -27,15 +31,7 @@ jobs:
       - name: Upload app files
         uses: actions/upload-pages-artifact@v4
         with:
-          path: |
-            coin-keeper.html
-            coin-keeper-config.js
-            coin-keeper-icon.svg
-            coin-keeper.webmanifest
-            service-worker.js
-            coin-keeper-phone-setup.md
-            coin-keeper-private-sync.sql
-            coin-keeper-phone-app.zip
+          path: .
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
