@@ -1,0 +1,41 @@
+name: Deploy Coin Keeper to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload app files
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: |
+            coin-keeper.html
+            coin-keeper-config.js
+            coin-keeper-icon.svg
+            coin-keeper.webmanifest
+            service-worker.js
+            coin-keeper-phone-setup.md
+            coin-keeper-private-sync.sql
+            coin-keeper-phone-app.zip
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
